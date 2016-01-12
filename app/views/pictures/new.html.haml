@@ -1,0 +1,14 @@
+= form_for Picture.new do |f|
+	%p
+		%label
+			Url du fichier
+			= f.text_field :name
+			
+	%p
+		%label
+			Id d'User
+			= f.select("user_id", User.all.collect {|p| [ p.name, p.id ] })
+	%p
+		= f.submit
+	%p
+		#{@errors}

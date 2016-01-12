@@ -1,0 +1,26 @@
+%html
+	%head
+		%title
+			Gestion des photos
+%body
+	%div
+
+		%p
+			Liste des images
+			%ul.active#list
+				- Picture.all.each do |picture|
+					-# %li{class: "user-#{user.id}"}
+					%li
+						%p
+							= image_tag("#{picture.name}",height: '100')
+							Image numéro #{picture.id}
+							(#{picture.name})
+							%p
+								Nom du propriétaire :
+								= User.find_by(id: picture.user_id).name
+							%p
+								= link_to "Modifier ", edit_picture_path(picture), {class:"btn btn-warning"}
+								= link_to("Supprimer", picture_path(picture), {method: "delete", class:"btn btn-danger"})
+					%hr
+			%p
+				= link_to 'Ajouter une photo', [:new, :picture],data:{confirm:"Etes vous sure ?"},class: "btn btn-success"

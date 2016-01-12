@@ -1,0 +1,26 @@
+%html
+	%head
+		%title
+			Gestion des utilisateurs
+%body
+	%div
+		%p
+			-if current_user.present?
+				= link_to 'Ajouter un con', [:new, :user],data:{confirm:"Etes vous sure ?"},class: "btn btn-success"
+		%ul.active#list
+			- User.all.each do |user|
+				-# %li{class: "user-#{user.id}"}
+				%li
+					%ul
+						%li
+							Nom:
+							= link_to user.name, [user]
+						%li
+							Nom de famille : #{user.surname}
+						%li
+							Mail : #{user.email}
+						-if current_user.present?
+							%p
+								= link_to "Modifier ", edit_user_path(user), {class:"btn btn-warning"}
+								= link_to "Supprimer", user_path(user) ,{method: "delete", data:{confirm:"T'ES SUR ?!" },class: "btn btn-danger"}
+							%hr

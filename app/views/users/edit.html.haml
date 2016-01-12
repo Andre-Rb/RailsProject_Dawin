@@ -1,0 +1,24 @@
+= form_for @user do |f|
+	%p
+		%label
+			Prenom
+			= f.text_field :name
+			-unless @user.errors[:name].empty?
+				%p
+					= @user.errors[:name]
+	%p
+		%label
+			Nom de famille
+			= f.text_field :surname
+			-unless @user.errors[:surname].empty?
+				%p
+					= @user.errors[:surname]
+	%p
+		%label
+			Email
+			= f.text_field :email
+			-unless @user.errors[:email].empty?
+				%p
+					= @user.errors[:email]
+	%p
+		= f.submit
