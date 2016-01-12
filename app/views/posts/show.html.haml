@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Titre:
+  = @post.titre
+%p
+  %b User:
+  = @post.user_id
+%p
+  %b Header:
+  = @post.header
+%p
+  %b Image:
+  = @post.image
+%p
+  %b Publishdate:
+  = @post.publishDate
+%p
+  %b Content:
+  = @post.content
+
+= link_to 'Edit', edit_post_path(@post)
+\|
+= link_to 'Back', posts_path

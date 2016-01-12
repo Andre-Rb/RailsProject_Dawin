@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151217094614) do
+ActiveRecord::Schema.define(version: 20160112095050) do
 
   create_table "backend_layout", primary_key: "uid", force: true do |t|
     t.integer "pid",                     default: 0,  null: false
@@ -506,6 +506,17 @@ ActiveRecord::Schema.define(version: 20151217094614) do
   end
 
   add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "titre"
+    t.integer  "user_id"
+    t.string   "header"
+    t.string   "image"
+    t.string   "publishDate"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sys_be_shortcuts", primary_key: "uid", force: true do |t|
     t.integer "userid",                default: 0,  null: false

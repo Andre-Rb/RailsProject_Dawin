@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 	# validates :surname, {presence: true}
 	# validates :name, presence: true
 	validates :email, presence: true
-	has_many:pictures
+	# has_many:pictures
 end

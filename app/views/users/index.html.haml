@@ -5,8 +5,9 @@
 %body
 	%div
 		%p
-			-if current_user.present?
-				= link_to 'Ajouter un con', [:new, :user],data:{confirm:"Etes vous sure ?"},class: "btn btn-success"
+			%h3 Liste des autres membres
+			-# -if current_user.present?
+			-# 	= link_to 'Ajouter un con', [:new, :user],data:{confirm:"Etes vous sure ?"},class: "btn btn-success"
 		%ul.active#list
 			- User.all.each do |user|
 				-# %li{class: "user-#{user.id}"}
