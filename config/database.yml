@@ -1,10 +1,20 @@
+# development:
+#   adapter:  mysql
+#   encoding: utf8
+#   database:  info_arabe
+#   username:  arabe
+#   password:  6Dpi1l3xqfj7
+#   host:  info-arie
+
 development:
   adapter:  mysql
   encoding: utf8
-  database:  info_arabe
-  username:  arabe
-  password:  6Dpi1l3xqfj7
-  host:  info-arie
+  database:  railsBlog
+  username:  root
+  password:  turlututu
+  host:  localhost
+
+
 
 test:
   adapter: mysql
