@@ -22,3 +22,6 @@ doc/
 .DS_Store
 Gemfile.lock
 vendor/
+config/database.yml
+tmp
+public/uploads

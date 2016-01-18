@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show]
 
+
+
+
 	def show
-		# @user = User.find(params[:id])
 		load_user
-		# render view : 'user/show', locals: {user: user}
+		@postsOfUser = Post.find_by id: @user.id
 	end
 
 	def create
@@ -25,7 +27,10 @@ class UsersController < ApplicationController
 		user_params = params[:user]
 		user_params= user_params.permit(:name, :surname, :email)
 		load_user
-		valid = @user.update user_params
+		if current_user == @user
+
+			valid = @user.update user_params
+		end
 		if valid
 			redirect_to users_path(@user)
 		else
@@ -42,7 +47,7 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		
+
 		load_user
 	end
 

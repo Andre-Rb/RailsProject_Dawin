@@ -1,2 +1,20 @@
 %h1
+	Prénom:
 	= @user.name
+%h1
+	Email:
+	= @user.email
+%h1
+	Nom:
+	= @user.surname
+%h1
+	Date de naissance:
+	= @user.birth_date
+
+
+	%h3
+		Liste de ses posts
+	%ol
+		-Post.where(user_id: @user.id).find_each do |post|
+			%li
+				= link_to post.titre, post

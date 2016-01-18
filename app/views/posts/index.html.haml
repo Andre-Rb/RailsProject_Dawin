@@ -1,3 +1,5 @@
+-if current_user.present?
+  = link_to 'Ecrire un nouveau post', new_post_path, class:"btn btn-default"
 .container
   .row
     .col-md-12
@@ -8,33 +10,23 @@
             .row
               %br/
               .col-md-2.col-sm-3.text-center
-                %a.story-img{:href => "#"}
-                  %img.img-circle{:src => "", :style => "width:100px;height:100px"}/
-                  = post.image
+
+                = link_to image_tag(post.postImage,:style => "width:100px;height:100px" , class:"story-img img-circle"), post
+
               .col-md-10.col-sm-9
                 %h3
-                  = post.titre
+                  = link_to post.titre,post
                 .row
                   .col-xs-9
                     %p
                       =post.header
                     %p.lead
-                      %div.btn.btn-default
-                        = link_to 'Show', post
-                      %div.btn.btn-default
-                        = link_to 'Edit', edit_post_path(post)
-                      %div.btn.btn-default
-                        = link_to 'Destroy', post, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
                     -# %p.pull-right
                     -#   %span.label.label-default keyword
                     -#   %span.label.label-default tag
                     -#   %span.label.label-default post
                     %ul.list-inline
-                      %li
-                        %a{:href => "#"} Par
-                        =post.user_id
-
                       %li
                         %a{:href => "#"} Publié le
                         =post.publishDate
@@ -52,8 +44,7 @@
                 %br/
             %hr/
 
--if current_user.present?
-  = link_to 'New Post', new_post_path
+
 -#
 -# %h1 Listing posts
 -#

@@ -22,6 +22,7 @@
 							Mail : #{user.email}
 						-if current_user.present?
 							%p
-								= link_to "Modifier ", edit_user_path(user), {class:"btn btn-warning"}
-								= link_to "Supprimer", user_path(user) ,{method: "delete", data:{confirm:"T'ES SUR ?!" },class: "btn btn-danger"}
+								-if current_user == user
+									= link_to "Modifier ", edit_user_path(user), {class:"btn btn-warning"}
+									= link_to "Supprimer", user_path(user) ,{method: "delete", data:{confirm:"T'ES SUR ?!" },class: "btn btn-danger"}
 							%hr

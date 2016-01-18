@@ -7,22 +7,27 @@
           %li= msg
 
   .field
-    = f.label :titre
-    = f.text_field :titre
+    = f.label "Titre de l'article"
+    %p
+      = f.text_field :titre
+  -# .field
+  -#   = f.label :user_id
+  -#   = f.select("user_id", User.all.collect {|p| [ p.name, p.id ] })
   .field
-    = f.label :user_id
-    = f.select("user_id", User.all.collect {|p| [ p.name, p.id ] })
+    = f.label "En tête de l'article ( Make it catchy !)"
+    %p
+      = f.text_field :header
   .field
-    = f.label :header
-    = f.text_field :header
-  .field
-    = f.label :image
-    = f.text_field :image
-  .field
-    = f.label :publishDate
-    = f.text_field :publishDate
+    = f.label :postImage
+    %p
+      = f.file_field :postImage
+  -# .field
+  -#   = f.label :publishDate
+  -#   %p
+  -#     = f.text_field :publishDate ,'test'
   .field
     = f.label :content
-    = f.text_area :content
+    %p
+      = f.text_area :content
   .actions
     = f.submit 'Save'

@@ -1,3 +1,4 @@
+# encoding: utf-8
 %html
   %head
     %title= yield(:title)
@@ -28,16 +29,16 @@
               %li
                 = link_to "Se connecter (Personne n'est connecté)", new_user_session_path
 
-          %ul.nav.navbar-right.navbar-nav
-            %li.dropdown.open
-              %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :href => "#"}
-                %i.glyphicon.glyphicon-search
-              %ul.dropdown-menu{:style => "padding:12px;"}
-                %form.form-inline
-                  .input-group
-                    %input.form-control{:placeholder => "Search for...", :type => "text"}/
-                    %span.input-group-btn
-                      %button.btn.btn-default{:type => "button"} Go!
+          -# %ul.nav.navbar-right.navbar-nav
+          -#   %li.dropdown.open
+          -#     %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :href => "#"}
+          -#       %i.glyphicon.glyphicon-search
+          -#     %ul.dropdown-menu{:style => "padding:12px;"}
+          -#       %form.form-inline
+          -#         .input-group
+          -#           %input.form-control{:placeholder => "Search for...", :type => "text"}/
+          -#           %span.input-group-btn
+          -#             %button.btn.btn-default{:type => "button"} Go!
 
     #masthead
       .container
@@ -45,12 +46,13 @@
           .col-md-7
             %h1
               Rabraud's Blog
-            %p.lead A ruby powered blog for DAWIN classes
+            %p.lead A RubyOnRails Powerred Blog for our LPDAWIN classes !
           .col-md-5
             .well.well-lg
               .row
-                .col-sm-12
-                  Ad Space ( or something else)
+                .col-sm-12.text-center
+                  =image_tag("logo.png")
+
 
 
   %div.container

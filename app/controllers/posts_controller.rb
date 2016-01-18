@@ -9,11 +9,14 @@ class PostsController < ApplicationController
   end
 
   def show
-    respond_with(@post)
+    @post = Post.find params[:id]
+    @writingUser = User.find(@post.user_id)
+    respond_with(@post, @writingUser)
   end
 
   def new
     @post = Post.new
+
     respond_with(@post)
   end
 
@@ -22,6 +25,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.publishDate = DateTime.now.utc
+    @post.user_id = current_user.id
+    # TODO miniature
     @post.save
     respond_with(@post)
   end
@@ -42,6 +48,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:post).permit(:titre, :user_id, :header, :image, :publishDate, :content)
+      params.require(:post).permit(:titre, :user_id, :header, :postImage, :publishDate, :content)
     end
 end

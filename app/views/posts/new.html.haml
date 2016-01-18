@@ -1,6 +1,10 @@
 %h1 Création d'un nouveau post
 
-= render 'form'
+
+
+
+
+=render partial: 'form', locals: {user: @user, post: @post}
 
 
 = link_to 'Back', posts_path
