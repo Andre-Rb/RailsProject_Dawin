@@ -6,13 +6,52 @@
     = javascript_include_tag :application
     = csrf_meta_tag
   %body
-    -if current_user.present?
-      %h3
-        Salut #{current_user.name} !
-      = link_to "Se déconnecter", destroy_user_session_path, method: "delete"
-    -else
-      %p
-        Personne n'est connecté
-        = link_to "Se connecter", new_user_session_path
+    %header.navbar.navbar-default.navbar-fixed-top{:role => "banner"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "/"} Home
+        %nav.collapse.navbar-collapse{:role => "navigation"}
+          %ul.nav.navbar-nav
+            %li
+              = link_to "Les Posts",  posts_path
+            %li
+              = link_to "Les membres",  users_path
+            -if current_user.present?
+              %li
+                = link_to "Se déconnecter (#{current_user.name})", destroy_user_session_path, method: "delete"
+            -else
+              %li
+                = link_to "Se connecter (Personne n'est connecté)", new_user_session_path
+
+          %ul.nav.navbar-right.navbar-nav
+            %li.dropdown.open
+              %a.dropdown-toggle{"aria-expanded" => "true", "data-toggle" => "dropdown", :href => "#"}
+                %i.glyphicon.glyphicon-search
+              %ul.dropdown-menu{:style => "padding:12px;"}
+                %form.form-inline
+                  .input-group
+                    %input.form-control{:placeholder => "Search for...", :type => "text"}/
+                    %span.input-group-btn
+                      %button.btn.btn-default{:type => "button"} Go!
+
+    #masthead
+      .container
+        .row
+          .col-md-7
+            %h1
+              Rabraud's Blog
+            %p.lead A ruby powered blog for DAWIN classes
+          .col-md-5
+            .well.well-lg
+              .row
+                .col-sm-12
+                  Ad Space ( or something else)
+
+
   %div.container
     = yield
